@@ -1,0 +1,2 @@
+require("omniking_lua")
+
