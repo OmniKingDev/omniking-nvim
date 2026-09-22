@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
     -- Default colorscheme
-    color = color or "tokyonight"
+    color = color or 'rose-pine'
     vim.cmd.colorscheme(color)
 end
 
@@ -8,5 +8,7 @@ end
 -- eve-prime
 -- tokyonight
 -- rose-pine
+-- vantablack
+-- miasma
 
-ColorMyPencils('eve-prime')
+ColorMyPencils('miasma')

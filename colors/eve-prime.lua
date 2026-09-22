@@ -18,7 +18,7 @@ local cyan        = "#02CFF8"
 local mint        = "#39FFD1"
 local electric    = "#00FFC4"
 local string      = "#CC849C"
-local comment     = "#6E457D"
+local comment     = "#CD5BC1"
 local control     = "#FF4057" -- alternate: "#00D7B5"
 vim.g.eve_control_color = control
 
