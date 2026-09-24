@@ -133,7 +133,10 @@ function M.load(path)
     eve.muted = eve.plum
 
     eve.comment = eve.bright_purple
-
+    -- Namespaces stay in the comment-purple family, but brighter.
+    -- This makes qualifiers such as `std` easy to parse without
+    -- giving them a completely separate visual identity.
+    eve.namespace = blend(eve.comment, eve.lavender, 0.28)
     -- Strings should remain readable without competing with code structure.
     -- Start from EVE pink, then pull it heavily toward the void.
     eve.string = blend(eve.pink, eve.void, 0.48)

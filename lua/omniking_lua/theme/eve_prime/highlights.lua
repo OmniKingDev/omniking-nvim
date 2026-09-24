@@ -87,6 +87,22 @@ function M.apply(eve)
         italic = true,
     })
 
+    -- C/C++ namespaces/modules.
+    --
+    -- `std` is identified as @module.cpp by Tree-sitter and as a
+    -- namespace by clangd semantic tokens. The LSP captures have
+    -- higher priority, so define both paths explicitly.
+    set_many({
+        "@module",
+        "@module.cpp",
+        "@lsp.type.namespace",
+        "@lsp.type.namespace.cpp",
+        "@lsp.typemod.namespace.defaultLibrary.cpp",
+        "@lsp.typemod.namespace.globalScope.cpp",
+    }, {
+        fg = eve.namespace,
+    })
+
     set_many({ "String", "Character" }, {
         fg = eve.string,
     })
@@ -159,11 +175,14 @@ function M.apply(eve)
     -- ========================================================
 
     hi(0, "@comment", {
-        fg = eve.comment,
-        italic = true,
-    })
 
-    set_many({
+fg = eve.comment,
+
+italic = true,
+
+})
+
+set_many({
         "@string",
         "@character",
     }, {

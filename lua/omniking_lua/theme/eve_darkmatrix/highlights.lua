@@ -171,8 +171,11 @@ function M.apply(eve)
 
     hi(0, "@comment", {
         fg = eve.comment,
-        italic = true,
     })
+
+
+    italic = true,
+
 
     set_many({
         "@string",
