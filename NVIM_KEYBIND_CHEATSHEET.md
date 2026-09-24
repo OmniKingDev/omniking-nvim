@@ -1,6 +1,6 @@
 # Neovim / Vim Keybind Cheat Sheet
 
-> Personal quick-reference for Vim/Neovim editing, diagnostics, LSP, and the custom Lua mappings we set up.
+> Personal quick-reference for Vim/Neovim editing, diagnostics, LSP, Snacks.nvim, and the custom Lua mappings we set up.
 
 ## 1. Diagnostics / Error Checking
 
@@ -263,6 +263,12 @@ If Telescope is installed:
 :Telescope keymaps
 ```
 
+With the current Snacks.nvim setup:
+
+```text
+<leader>sk      open the Snacks keymap picker
+```
+
 ## 14. Lua Keymap Syntax
 
 ```lua
@@ -294,6 +300,54 @@ Multiple modes:
 vim.keymap.set({ "n", "v" }, "<leader>x", some_function)
 ```
 
+## 15. Snacks.nvim — Current Keybinds
+
+These are the mappings currently added through `snacks.nvim`.
+
+### Files / Search
+
+| Key | Action |
+|---|---|
+| `<leader>ff` | Find files |
+| `<leader>fg` | Find Git-tracked files |
+| `<leader>fr` | Recent files |
+| `<leader>/` | Grep project text |
+| `<leader>fb` | Open buffer picker |
+
+### Code / LSP Pickers
+
+| Key | Action |
+|---|---|
+| `gd` | Find LSP definitions with Snacks picker |
+| `gr` | Find LSP references with Snacks picker |
+
+`gr` is the Snacks picker mapping. The built-in/LSP `grr` reference mapping listed earlier remains a separate key sequence unless another plugin overrides it.
+
+### Discovery / Neovim
+
+| Key | Action |
+|---|---|
+| `<leader>sk` | Search active keymaps |
+| `<leader>sh` | Search help pages |
+| `<leader>sC` | Search Neovim commands |
+| `<leader>uC` | Browse colorschemes |
+
+### Notifications / Utilities
+
+| Key | Action |
+|---|---|
+| `<leader>n` | Open notification history |
+| `<leader>bd` | Delete current buffer without disrupting the window layout |
+| `<leader>gg` | Open LazyGit |
+
+`Snacks.words` is intentionally disabled, so there are no automatic matching-word highlights or Snacks word-jump mappings in this setup.
+
+Useful health check:
+
+```vim
+:checkhealth snacks
+```
+
 # Fast Memory Section
 
 ```text
@@ -314,6 +368,22 @@ gO              document symbols
 
 YOUR EXTRA
 <leader>i       toggle inlay hints
+
+SNACKS
+<leader>ff      find files
+<leader>fg      find Git files
+<leader>fr      recent files
+<leader>/       grep project
+<leader>fb      buffers
+gd              definitions picker
+gr              references picker
+<leader>sk      keymaps
+<leader>sh      help pages
+<leader>sC      commands
+<leader>uC      colorschemes
+<leader>n       notification history
+<leader>bd      delete buffer
+<leader>gg      LazyGit
 
 MOVEMENT
 w / b           next / previous word
