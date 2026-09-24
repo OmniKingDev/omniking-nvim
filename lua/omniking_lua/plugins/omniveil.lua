@@ -4,8 +4,17 @@ return {
         name = "omniveil",
         lazy = false,
 
-        config = function()
-            require("omniveil").setup()
+        opts = {
+            -- your OmniVeil settings live here
+            glyph = {
+                outline = {
+                    enabled = false,
+                }
+            }
+        },
+
+        config = function(_, opts)
+            require("omniveil").setup(opts)
         end,
     },
 }

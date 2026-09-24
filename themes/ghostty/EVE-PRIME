@@ -1,0 +1,64 @@
+# --- THE VOID & THE STARK BASELINE ---
+background =#101010
+
+# SALMON COLORS #
+# foreground = #8B444E
+# foreground = #CC594C
+# foreground = #CB8269
+foreground =#E9967A
+# foreground = #B8441D
+# foreground = #E67366
+
+# FAINT COLORS #
+
+# ROSE COLORS
+# foreground = #1a0a0d
+# foreground = #270f13
+# foreground = #3a161c
+# foreground = #60252e
+# foreground = #A1525D
+# foreground = #A44C65
+# foreground = #9C4560
+
+# DEEP PURPLE
+# foreground = #0f0514
+# foreground = #16071e
+# foreground = #210a2d
+# foreground = #37114b 
+
+# MIDNIGHT PLUM
+# foreground = #14050c
+# foreground = #1e0712
+# foreground = #2d0a1b
+# foreground = #4b112d
+
+# LAVENDER
+# foreground = #403353
+# foreground = #5E4E76
+# foreground = #83719E
+# foreground = #AD9BCC
+
+# --- ROW 1: THE NEON INJECTION ---
+palette = 0=#1B0A26
+palette = 1=#FF0055
+palette = 2=#DF00FF
+palette = 3=#FF007F
+palette = 4=#7000FF
+palette = 5=#FF00FF
+palette = 6=#B300FF
+palette = 7=#E8D0FF
+
+# --- ROW 2: THE SUPPORTING SPECTRUM ---
+palette = 8=#3D145A
+palette = 9=#FF3377
+palette = 10=#E633FF
+palette = 11=#FF3399
+palette = 12=#8C33FF
+palette = 13=#FF33FF
+palette = 14=#00D4FF
+palette = 15=#FFFFFF
+
+# --- UI ELEMENTS ---
+# selection-background = #4B0082
+selection-background = #8B444E
+selection-foreground = #FFFFFF
