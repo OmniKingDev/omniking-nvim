@@ -1,0 +1,41 @@
+# ============================================================
+# EVE-DARKMATRIX
+#
+# Darkmatrix-inspired contrast hierarchy using EVE's spectrum.
+# ============================================================
+
+background = #09090D
+foreground = #C88F82
+
+# ------------------------------------------------------------
+# PRIMARY SPECTRUM
+# ------------------------------------------------------------
+
+palette = 0=#16091F
+palette = 1=#FF0055
+palette = 2=#B74DFF
+palette = 3=#FF3D8D
+palette = 4=#6238FF
+palette = 5=#D82CFF
+palette = 6=#972CFF
+palette = 7=#D9BEE8
+
+# ------------------------------------------------------------
+# BRIGHT / SUPPORTING SPECTRUM
+# ------------------------------------------------------------
+
+palette = 8=#321541
+palette = 9=#FF3B73
+palette = 10=#D060FF
+palette = 11=#FF6AA7
+palette = 12=#7770FF
+palette = 13=#F05CFF
+palette = 14=#00D4FF
+palette = 15=#F7EEF8
+
+# ------------------------------------------------------------
+# UI
+# ------------------------------------------------------------
+
+selection-background = #43263F
+selection-foreground = #F7EEF8

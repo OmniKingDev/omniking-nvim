@@ -50,7 +50,6 @@ vim.keymap.set('n', '<leader>Y', "\"+Y")
 -- Save deleted lines to clipboard
 vim.keymap.set('n', '<leader>dd', "\"_d")
 vim.keymap.set('v', '<leader>dd', "\"_d")
-
 -- Ensure <C-c> is doing what <ESC> does
 vim.keymap.set('i', '<C-c>', "<ESC>")
 
@@ -61,8 +60,8 @@ vim.keymap.set('n', 'Q', "<nop>")
 -- vim.keymap.set('n', '<C-f>', "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Navigate Fixes
-vim.keymap.set('n', '<C-k>', "<cmd>cnext<CR>zz")
-vim.keymap.set('n', '<C-j>', "<cmd>cprev<CR>zz")
+vim.keymap.set('n', '<leader>qk', "<cmd>cnext<CR>zz")
+vim.keymap.set('n', '<leader>qj', "<cmd>cprev<CR>zz")
 vim.keymap.set('n', '<leader>k', "<cmd>lnext<CR>zz")
 vim.keymap.set('n', '<leader>j', "<cmd>lprev<CR>zz")
 
