@@ -1,50 +1,50 @@
 # ============================================================
-# EVE-PRIME
-# Rose / plum variant of the EVE theme family.
+# EVE-MATRIX
+# Near-black purple matrix variant of the EVE family.
 #
 # This is a clean terminal palette source.
-# Personal background images, shaders, transparency, animations,
+# Personal backgrounds, transparency, shaders, animations,
 # and machine-specific presentation do NOT belong here.
 # ============================================================
 
-# Deep rose-plum surface.
-background = #24151F
+# Near-black purple surface.
+background = #09090D
 
-# Primary EVE text.
-foreground = #E9967A
+# Softer rose foreground than canonical EVE / PRIME.
+foreground = #C88F82
 
 
 # ------------------------------------------------------------
-# CORE EVE SPECTRUM
+# CORE DARKMATRIX SPECTRUM
 # ------------------------------------------------------------
 
-palette = 0=#1B0A26
+palette = 0=#16091F
 palette = 1=#FF0055
-palette = 2=#DF00FF
-palette = 3=#FF007F
-palette = 4=#7000FF
-palette = 5=#FF00FF
-palette = 6=#B300FF
-palette = 7=#E8D0FF
+palette = 2=#B74DFF
+palette = 3=#FF3D8D
+palette = 4=#6238FF
+palette = 5=#D82CFF
+palette = 6=#972CFF
+palette = 7=#D9BEE8
 
 
 # ------------------------------------------------------------
 # BRIGHT / SUPPORTING SPECTRUM
 # ------------------------------------------------------------
 
-palette = 8=#3D145A
-palette = 9=#FF3377
-palette = 10=#E633FF
-palette = 11=#FF3399
-palette = 12=#8C33FF
-palette = 13=#FF33FF
+palette = 8=#321541
+palette = 9=#FF3B73
+palette = 10=#D060FF
+palette = 11=#FF6AA7
+palette = 12=#7770FF
+palette = 13=#F05CFF
 palette = 14=#00D4FF
-palette = 15=#FFFFFF
+palette = 15=#F7EEF8
 
 
 # ------------------------------------------------------------
 # SELECTION
 # ------------------------------------------------------------
 
-selection-background = #8B444E
-selection-foreground = #FFFFFF
+selection-background = #43263F
+selection-foreground = #F7EEF8

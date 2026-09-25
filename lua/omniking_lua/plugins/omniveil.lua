@@ -9,8 +9,12 @@ return {
             glyph = {
                 outline = {
                     enabled = false,
-                }
-            }
+                },
+            },
+
+            background = {
+                enabled = false,
+            },
         },
 
         config = function(_, opts)

@@ -10,7 +10,7 @@ end
 
 function M.apply(eve)
     -- ========================================================
-    -- EDITOR SURFACES
+    -- EDITOR SURFACE
     -- ========================================================
 
     hi(0, "Normal", {
@@ -41,21 +41,24 @@ function M.apply(eve)
         bg = "NONE",
     })
 
-    hi(0, "CursorLine", {
-        bg = "NONE",
-    })
-
     hi(0, "LineNr", {
         fg = eve.muted,
+        bg = "NONE",
     })
 
     hi(0, "CursorLineNr", {
         fg = eve.accent,
+        bg = "NONE",
         bold = true,
+    })
+
+    hi(0, "CursorLine", {
+        bg = "NONE",
     })
 
     hi(0, "WinSeparator", {
         fg = eve.bright_purple,
+        bg = "NONE",
     })
 
     -- ========================================================
@@ -63,23 +66,23 @@ function M.apply(eve)
     -- ========================================================
 
     hi(0, "Visual", {
-        fg = eve.selection_fg or eve.text_bright,
+        fg = eve.selection_fg,
         bg = eve.selection_bg,
     })
 
     hi(0, "Search", {
-        fg = eve.void,
-        bg = eve.lavender,
+        fg = eve.background,
+        bg = eve.gold,
     })
 
     hi(0, "IncSearch", {
-        fg = eve.white,
-        bg = eve.rose,
+        fg = eve.background,
+        bg = eve.bright_pink,
         bold = true,
     })
 
     -- ========================================================
-    -- BASE VIM SYNTAX
+    -- COMMENTS
     -- ========================================================
 
     hi(0, "Comment", {
@@ -87,37 +90,36 @@ function M.apply(eve)
         italic = true,
     })
 
-    -- C/C++ namespaces/modules.
+    hi(0, "@comment", {
+        fg = eve.comment,
+        italic = true,
+    })
+
+    -- Standard NOTE-style captures, when a parser exposes them.
     --
-    -- `std` is identified as @module.cpp by Tree-sitter and as a
-    -- namespace by clangd semantic tokens. The LSP captures have
-    -- higher priority, so define both paths explicitly.
+    -- The cross-language NOTE: body treatment can be layered
+    -- separately once we test how each parser exposes comments.
     set_many({
-        "@module",
-        "@module.cpp",
-        "@lsp.type.namespace",
-        "@lsp.type.namespace.cpp",
-        "@lsp.typemod.namespace.defaultLibrary.cpp",
-        "@lsp.typemod.namespace.globalScope.cpp",
+        "@comment.note",
+        "Todo",
     }, {
-        fg = eve.namespace,
-    })
-
-    set_many({ "String", "Character" }, {
-        fg = eve.string,
-    })
-
-    set_many({ "Number", "Float", "Boolean" }, {
-        fg = eve.number,
-    })
-
-    hi(0, "Identifier", {
-        fg = eve.text,
-    })
-
-    hi(0, "Function", {
-        fg = eve.function_name,
+        fg = eve.note,
         bold = true,
+    })
+
+    -- ========================================================
+    -- BASE VIM SYNTAX
+    --
+    -- Default EVE deliberately groups many concepts together.
+    -- The goal is the simple Ghostty-style color hierarchy,
+    -- not a different color for every semantic category.
+    -- ========================================================
+
+    set_many({
+        "Identifier",
+        "Function",
+    }, {
+        fg = eve.text,
     })
 
     set_many({
@@ -131,22 +133,6 @@ function M.apply(eve)
 
     hi(0, "Conditional", {
         fg = eve.control,
-        bold = true,
-    })
-
-    set_many({
-        "PreProc",
-        "Include",
-        "Define",
-        "PreCondit",
-    }, {
-        fg = eve.bright_magenta,
-        bold = true,
-    })
-
-    hi(0, "Macro", {
-        fg = eve.macro,
-        bold = true,
     })
 
     set_many({
@@ -155,7 +141,33 @@ function M.apply(eve)
         "Structure",
         "Typedef",
     }, {
-        fg = eve.type,
+        fg = eve.structure,
+    })
+
+    set_many({
+        "String",
+        "Character",
+    }, {
+        fg = eve.string,
+    })
+
+    set_many({
+        "Number",
+        "Float",
+        "Boolean",
+        "Constant",
+    }, {
+        fg = eve.number,
+    })
+
+    set_many({
+        "PreProc",
+        "Include",
+        "Define",
+        "PreCondit",
+        "Macro",
+    }, {
+        fg = eve.bright_magenta,
     })
 
     hi(0, "Operator", {
@@ -163,7 +175,7 @@ function M.apply(eve)
     })
 
     hi(0, "Delimiter", {
-        fg = eve.punctuation,
+        fg = eve.text,
     })
 
     hi(0, "Special", {
@@ -174,75 +186,19 @@ function M.apply(eve)
     -- TREE-SITTER
     -- ========================================================
 
-    hi(0, "@comment", {
-        fg = eve.comment,
-        italic = true,
-    })
-
-set_many({
-        "@string",
-        "@character",
-    }, {
-        fg = eve.string,
-    })
-
-    hi(0, "@string.escape", {
-        fg = eve.special,
-    })
-
     set_many({
-        "@number",
-        "@number.float",
-        "@boolean",
-        "@constant",
-        "@constant.macro",
-    }, {
-        fg = eve.number,
-    })
-
-    hi(0, "@constant.builtin", {
-        fg = eve.number,
-        bold = true,
-    })
-
-    hi(0, "@variable", {
-        fg = eve.text,
-    })
-
-    hi(0, "@variable.parameter", {
-        fg = eve.parameter,
-    })
-
-    set_many({
+        "@variable",
+        "@variable.parameter",
         "@variable.member",
         "@property",
-    }, {
-        fg = eve.member,
-    })
 
-    set_many({
         "@function",
         "@function.call",
-    }, {
-        fg = eve.function_name,
-        bold = true,
-    })
-
-    set_many({
         "@function.method",
         "@function.method.call",
+        "@function.builtin",
     }, {
-        fg = eve.method_name,
-        bold = true,
-    })
-
-    hi(0, "@function.builtin", {
-        fg = eve.function_name,
-    })
-
-    hi(0, "@function.macro", {
-        fg = eve.macro,
-        bold = true,
+        fg = eve.text,
     })
 
     set_many({
@@ -259,17 +215,48 @@ set_many({
     set_many({
         "@keyword.return",
         "@keyword.conditional",
+        "@keyword.exception",
     }, {
         fg = eve.control,
-        bold = true,
     })
 
     set_many({
         "@type",
         "@type.builtin",
         "@type.definition",
+
+        "@module",
+        "@namespace",
     }, {
-        fg = eve.type,
+        fg = eve.structure,
+    })
+
+    set_many({
+        "@string",
+        "@character",
+    }, {
+        fg = eve.string,
+    })
+
+    hi(0, "@string.escape", {
+        fg = eve.special,
+    })
+
+    set_many({
+        "@number",
+        "@number.float",
+        "@boolean",
+        "@constant",
+        "@constant.builtin",
+    }, {
+        fg = eve.number,
+    })
+
+    set_many({
+        "@constant.macro",
+        "@function.macro",
+    }, {
+        fg = eve.bright_magenta,
     })
 
     hi(0, "@operator", {
@@ -281,7 +268,42 @@ set_many({
         "@punctuation.bracket",
         "@punctuation.delimiter",
     }, {
-        fg = eve.punctuation,
+        fg = eve.text,
+    })
+
+    -- ========================================================
+    -- LSP SEMANTIC TOKENS
+    --
+    -- Keep semantic tokens from turning default EVE back into
+    -- a highly segmented theme.
+    -- ========================================================
+
+    set_many({
+        "@lsp.type.variable",
+        "@lsp.type.parameter",
+        "@lsp.type.property",
+        "@lsp.type.function",
+        "@lsp.type.method",
+    }, {
+        fg = eve.text,
+    })
+
+    set_many({
+        "@lsp.type.namespace",
+        "@lsp.type.class",
+        "@lsp.type.struct",
+        "@lsp.type.interface",
+        "@lsp.type.type",
+        "@lsp.type.typeParameter",
+    }, {
+        fg = eve.structure,
+    })
+
+    set_many({
+        "@lsp.type.enumMember",
+        "@lsp.type.number",
+    }, {
+        fg = eve.number,
     })
 
     -- ========================================================
@@ -293,7 +315,7 @@ set_many({
     })
 
     hi(0, "DiagnosticWarn", {
-        fg = eve.bright_pink,
+        fg = eve.gold,
     })
 
     hi(0, "DiagnosticInfo", {
@@ -305,7 +327,7 @@ set_many({
     })
 
     -- ========================================================
-    -- FLOATS / COMPLETION
+    -- COMPLETION / FLOATS
     -- ========================================================
 
     hi(0, "FloatBorder", {
@@ -324,7 +346,7 @@ set_many({
     })
 
     hi(0, "PmenuSel", {
-        fg = eve.text_bright,
+        fg = eve.selection_fg,
         bg = eve.selection_bg,
         bold = true,
     })
@@ -364,20 +386,18 @@ set_many({
     })
 
     hi(0, "TelescopeSelection", {
-        fg = eve.text_bright,
+        fg = eve.selection_fg,
         bg = eve.selection_bg,
         bold = true,
     })
 
     hi(0, "TelescopeMatching", {
-        fg = eve.pink,
+        fg = eve.bright_pink,
         bold = true,
     })
 
     -- ========================================================
     -- STATUS / TAB / WINBAR
-    --
-    -- PRIME currently uses transparent editor surfaces in the personal setup.
     -- ========================================================
 
     set_many({

@@ -25,3 +25,9 @@ local eve =
     require("omniking_lua.theme.eve_prime.palette").load()
 
 require("omniking_lua.theme.eve_prime.highlights").apply(eve)
+
+local config =
+    require("omniking_lua.theme.eve_shared.config").get()
+
+require("omniking_lua.theme.eve_shared.surface").apply(eve, config)
+

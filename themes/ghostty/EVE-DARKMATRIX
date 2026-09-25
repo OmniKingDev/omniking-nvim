@@ -1,14 +1,21 @@
 # ============================================================
 # EVE-DARKMATRIX
+# Deep-black / purple high-contrast variant of the EVE family.
 #
-# Darkmatrix-inspired contrast hierarchy using EVE's spectrum.
+# This is a clean terminal palette source.
+# Personal backgrounds, transparency, shaders, animations,
+# and machine-specific presentation do NOT belong here.
 # ============================================================
 
+# Near-black purple surface.
 background = #09090D
+
+# Softer rose foreground than canonical EVE / PRIME.
 foreground = #C88F82
 
+
 # ------------------------------------------------------------
-# PRIMARY SPECTRUM
+# CORE DARKMATRIX SPECTRUM
 # ------------------------------------------------------------
 
 palette = 0=#16091F
@@ -19,6 +26,7 @@ palette = 4=#6238FF
 palette = 5=#D82CFF
 palette = 6=#972CFF
 palette = 7=#D9BEE8
+
 
 # ------------------------------------------------------------
 # BRIGHT / SUPPORTING SPECTRUM
@@ -33,8 +41,9 @@ palette = 13=#F05CFF
 palette = 14=#00D4FF
 palette = 15=#F7EEF8
 
+
 # ------------------------------------------------------------
-# UI
+# SELECTION
 # ------------------------------------------------------------
 
 selection-background = #43263F

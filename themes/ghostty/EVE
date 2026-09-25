@@ -1,21 +1,19 @@
 # ============================================================
-# EVE-PRIME
-# Rose / plum variant of the EVE theme family.
-#
-# This is a clean terminal palette source.
-# Personal background images, shaders, transparency, animations,
-# and machine-specific presentation do NOT belong here.
+# EVE
+# Canonical EVE terminal palette
 # ============================================================
 
-# Deep rose-plum surface.
-background = #24151F
+# Deep blue-charcoal base.
+# Inspired by the blue tone produced by the original
+# Ghostty EVE presentation, but made into EVE's actual surface.
+background = #18262D
 
 # Primary EVE text.
 foreground = #E9967A
 
 
 # ------------------------------------------------------------
-# CORE EVE SPECTRUM
+# ROW 1 — CORE EVE SPECTRUM
 # ------------------------------------------------------------
 
 palette = 0=#1B0A26
@@ -29,7 +27,7 @@ palette = 7=#E8D0FF
 
 
 # ------------------------------------------------------------
-# BRIGHT / SUPPORTING SPECTRUM
+# ROW 2 — SUPPORTING / BRIGHT SPECTRUM
 # ------------------------------------------------------------
 
 palette = 8=#3D145A
@@ -39,7 +37,10 @@ palette = 11=#FF3399
 palette = 12=#8C33FF
 palette = 13=#FF33FF
 palette = 14=#00D4FF
-palette = 15=#FFFFFF
+
+# Gold occupies the old white slot.
+# Neovim will use this for NOTE: and other deliberate emphasis.
+palette = 15=#F2C94C
 
 
 # ------------------------------------------------------------
@@ -47,4 +48,6 @@ palette = 15=#FFFFFF
 # ------------------------------------------------------------
 
 selection-background = #8B444E
-selection-foreground = #FFFFFF
+
+# Selected characters use EVE's pale lavender instead of white.
+selection-foreground = #E8D0FF

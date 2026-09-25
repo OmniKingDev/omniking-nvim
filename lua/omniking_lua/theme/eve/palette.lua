@@ -1,20 +1,15 @@
 local M = {}
 
--- ============================================================
--- EVE-PRIME PALETTE
+-- Canonical EVE palette.
 --
--- PRIME is the richer rose/plum variation of the EVE family.
+-- Ghostty owns the raw color spectrum:
+--   themes/ghostty/EVE
 --
--- Raw terminal color ownership:
---   themes/ghostty/EVE-PRIME
---
--- This module translates that raw terminal palette into semantic
--- Neovim roles. It does NOT define editor highlights itself.
--- ============================================================
+-- This file reads that spectrum and gives the colors semantic
+-- meaning for Neovim without duplicating the raw hex values.
 
-local prime_theme =
-    vim.fn.stdpath("config") .. "/themes/ghostty/EVE-PRIME"
-
+local default_theme =
+    vim.fn.stdpath("config") .. "/themes/ghostty/EVE"
 
 local function blend(a, b, amount)
     local function channel(color, offset)
@@ -33,15 +28,13 @@ local function blend(a, b, amount)
     )
 end
 
-
 local function trim(value)
     return value:match("^%s*(.-)%s*$")
 end
 
-
 local function parse_theme(path)
     if vim.fn.filereadable(path) ~= 1 then
-        error("EVE-PRIME palette not found: " .. path)
+        error("EVE palette not found: " .. path)
     end
 
     local raw = {
@@ -52,8 +45,8 @@ local function parse_theme(path)
         local line = trim(original_line)
 
         -- Ghostty comments begin with '#'.
-        -- Hex colors also begin with '#', so only skip when the
-        -- FIRST non-whitespace character is '#'.
+        -- Hex colors also begin with '#', so only skip the line
+        -- when the first non-whitespace character is '#'.
         if line ~= "" and line:sub(1, 1) ~= "#" then
             local key, value =
                 line:match("^([%w%-]+)%s*=%s*(.-)%s*$")
@@ -66,16 +59,12 @@ local function parse_theme(path)
                     if index and color then
                         raw.palette[tonumber(index)] = color:upper()
                     end
-
                 elseif key == "background" then
                     raw.background = value:upper()
-
                 elseif key == "foreground" then
                     raw.foreground = value:upper()
-
                 elseif key == "selection-background" then
                     raw.selection_background = value:upper()
-
                 elseif key == "selection-foreground" then
                     raw.selection_foreground = value:upper()
                 end
@@ -83,38 +72,33 @@ local function parse_theme(path)
         end
     end
 
-    assert(raw.background, "EVE-PRIME is missing background")
-    assert(raw.foreground, "EVE-PRIME is missing foreground")
+    assert(raw.background, "EVE is missing background")
+    assert(raw.foreground, "EVE is missing foreground")
 
     for index = 0, 15 do
         assert(
             raw.palette[index],
-            "EVE-PRIME is missing palette index " .. index
+            "EVE is missing palette index " .. index
         )
     end
 
     return raw
 end
 
-
 function M.load(path)
-    local raw = parse_theme(path or prime_theme)
+    local raw = parse_theme(path or default_theme)
     local ansi = raw.palette
 
     -- ========================================================
-    -- RAW EVE-PRIME IDENTITY
+    -- RAW EVE IDENTITY
     --
-    -- These names describe the actual colors rather than the
-    -- conventional ANSI meaning of their numbered slots.
+    -- These names describe appearance, not ANSI semantics.
     -- ========================================================
 
     local eve = {
         raw = raw,
 
         background = raw.background,
-        foreground = raw.foreground,
-
-        void = raw.background,
         salmon = raw.foreground,
 
         deep_purple = ansi[0],
@@ -133,94 +117,51 @@ function M.load(path)
         bright_purple = ansi[12],
         bright_magenta = ansi[13],
         cyan = ansi[14],
-        white = ansi[15],
+        gold = ansi[15],
 
         selection_bg = raw.selection_background,
         selection_fg = raw.selection_foreground,
     }
 
-
     -- ========================================================
-    -- EVE-PRIME SEMANTIC SPECTRUM
+    -- DEFAULT EVE SEMANTIC LANGUAGE
     --
-    -- PRIME is intentionally richer and more segmented than
-    -- canonical EVE.
-    --
-    -- Canonical EVE:
-    --     simple terminal-inspired hierarchy
-    --
-    -- EVE-PRIME:
-    --     richer semantic separation using the same family
-    --
-    -- EVE-DARKMATRIX:
-    --     darker, higher-contrast hierarchy
+    -- Default EVE intentionally stays simple.
+    -- Multiple syntax concepts are allowed to share colors.
+    -- We only introduce distinctions that improve readability.
     -- ========================================================
 
     eve.text = eve.salmon
     eve.text_bright = eve.lavender
-    eve.muted = eve.plum
+    eve.muted = blend(eve.salmon, eve.background, 0.62)
 
-
-    -- Comments remain recessed purple.
-    eve.comment = eve.bright_purple
-
-    -- Namespaces remain in the comment-purple family but are
-    -- brighter so qualifiers such as `std` remain distinguishable.
-    eve.namespace =
-        blend(eve.comment, eve.lavender, 0.28)
-
-
-    -- Strings stay readable without competing with structure.
-    eve.string =
-        blend(eve.pink, eve.void, 0.48)
-
-    eve.number = eve.bright_violet
-
-
-    -- Parameters intentionally stay faint.
-    eve.parameter =
-        blend(eve.lavender, eve.void, 0.58)
-
-
-    -- Functions receive the strongest cyan role.
-    eve.function_name = eve.cyan
-
-    -- Methods remain related to functions while moving toward
-    -- EVE's deeper purple/blue family.
-    eve.method_name =
-        blend(eve.cyan, eve.electric_purple, 0.35)
-
-
-    -- Gold deliberately expands PRIME beyond the original
-    -- terminal spectrum for preprocessing / macro concepts.
-    eve.gold = "#D6A94A"
-    eve.gold_dim =
-        blend(eve.gold, eve.void, 0.50)
-
-    eve.macro = eve.gold
-
-
+    -- Main syntax families.
     eve.keyword = eve.pink
     eve.control = eve.rose
-    eve.type = eve.bright_purple
-
-    eve.member = eve.magenta
+    eve.structure = eve.bright_violet
+    eve.string = eve.bright_pink
+    eve.number = eve.violet
     eve.operator = eve.bright_pink
-
-
-    -- Structural punctuation remains faint scaffolding rather
-    -- than competing with identifiers and semantic structure.
-    eve.punctuation =
-        blend("#FFD1DF", eve.void, 0.55)
-
     eve.special = eve.bright_magenta
 
+    -- Comments are intentionally faint cyan.
+    --
+    -- The raw cyan is extremely bright, so fading it toward the
+    -- EVE surface keeps comments recessed while preserving the
+    -- cyan identity even on a transparent presentation.
+    eve.comment = blend(eve.cyan, eve.background, 0.58)
 
+    -- NOTE: is deliberate emphasis.
+    eve.note = eve.gold
+
+    -- The text following NOTE: remains cyan but comes forward
+    -- compared with an ordinary comment.
+    eve.note_text = blend(eve.cyan, eve.background, 0.22)
+
+    -- General accent for UI elements that genuinely need one.
     eve.accent = eve.cyan
-
 
     return eve
 end
-
 
 return M

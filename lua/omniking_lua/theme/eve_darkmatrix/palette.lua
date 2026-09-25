@@ -140,13 +140,13 @@ function M.load(path)
     eve.text = eve.salmon
     eve.text_bright = eve.lavender
 
-    eve.muted = blend(eve.salmon, eve.void, 0.68)
+    eve.muted = blend(eve.salmon, eve.void, 0.84)
 
-    -- Gold comments are intentional for this variant.
-    eve.comment = blend(eve.blue_violet, eve.deep_purple, 0.25)
+    -- Comments sink deep into the background while preserving a blue-violet identity.
+    eve.comment = blend(eve.blue_violet, eve.void, 0.82)
 
     -- Strings stay pink-family but sit farther back.
-    eve.string = blend(eve.bright_pink, eve.void, 0.52)
+    eve.string = blend(eve.bright_pink, eve.void, 0.72)
 
     -- Numbers/constants should remain easy to distinguish.
     eve.number = eve.bright_violet
@@ -158,11 +158,11 @@ function M.load(path)
     eve.method_name = blend(eve.cyan, eve.blue_violet, 0.42)
 
     -- Parameters deliberately recede.
-    eve.variable = blend(eve.salmon, eve.void, 0.22)
-    eve.parameter = blend(eve.lavender, eve.void, 0.62)
+    eve.variable = blend(eve.salmon, eve.void, 0.56)
+    eve.parameter = blend(eve.lavender, eve.void, 0.84)
 
     -- Control-flow should pop immediately.
-    eve.keyword = blend(eve.pink, eve.void, 0.20)
+    eve.keyword = blend(eve.pink, eve.void, 0.40)
     eve.control = eve.bright_rose
 
     -- Types belong to the purple family.
@@ -175,7 +175,7 @@ function M.load(path)
     eve.operator = eve.bright_pink
 
     -- Structural punctuation is scaffolding, not content.
-    eve.punctuation = blend("#FFD1DF", eve.void, 0.74)
+    eve.punctuation = blend("#FFD1DF", eve.void, 0.90)
 
     eve.special = eve.bright_magenta
 

@@ -55,11 +55,15 @@ function M.apply(eve)
     })
 
     hi(0, "WinSeparator", {
-        fg = eve.bright_purple,
+        fg = eve.deep_green,
     })
 
     -- ========================================================
     -- SELECTION / SEARCH
+    --
+    -- No passive word highlighting.
+    -- Background highlighting is reserved for intentional
+    -- Visual mode and explicit searching.
     -- ========================================================
 
     hi(0, "Visual", {
@@ -69,12 +73,12 @@ function M.apply(eve)
 
     hi(0, "Search", {
         fg = eve.void,
-        bg = eve.lavender,
+        bg = eve.bright_lime,
     })
 
     hi(0, "IncSearch", {
-        fg = eve.white,
-        bg = eve.rose,
+        fg = eve.void,
+        bg = eve.electric_green,
         bold = true,
     })
 
@@ -87,27 +91,18 @@ function M.apply(eve)
         italic = true,
     })
 
-    -- C/C++ namespaces/modules.
-    --
-    -- `std` is identified as @module.cpp by Tree-sitter and as a
-    -- namespace by clangd semantic tokens. The LSP captures have
-    -- higher priority, so define both paths explicitly.
     set_many({
-        "@module",
-        "@module.cpp",
-        "@lsp.type.namespace",
-        "@lsp.type.namespace.cpp",
-        "@lsp.typemod.namespace.defaultLibrary.cpp",
-        "@lsp.typemod.namespace.globalScope.cpp",
+        "String",
+        "Character",
     }, {
-        fg = eve.namespace,
-    })
-
-    set_many({ "String", "Character" }, {
         fg = eve.string,
     })
 
-    set_many({ "Number", "Float", "Boolean" }, {
+    set_many({
+        "Number",
+        "Float",
+        "Boolean",
+    }, {
         fg = eve.number,
     })
 
@@ -140,7 +135,7 @@ function M.apply(eve)
         "Define",
         "PreCondit",
     }, {
-        fg = eve.bright_magenta,
+        fg = eve.bright_green,
         bold = true,
     })
 
@@ -176,10 +171,13 @@ function M.apply(eve)
 
     hi(0, "@comment", {
         fg = eve.comment,
-        italic = true,
     })
 
-set_many({
+
+    italic = true,
+
+
+    set_many({
         "@string",
         "@character",
     }, {
@@ -206,7 +204,7 @@ set_many({
     })
 
     hi(0, "@variable", {
-        fg = eve.text,
+        fg = eve.variable,
     })
 
     hi(0, "@variable.parameter", {
@@ -220,6 +218,7 @@ set_many({
         fg = eve.member,
     })
 
+    -- Ordinary functions.
     set_many({
         "@function",
         "@function.call",
@@ -228,6 +227,7 @@ set_many({
         bold = true,
     })
 
+    -- Methods intentionally receive a separate related color.
     set_many({
         "@function.method",
         "@function.method.call",
@@ -240,6 +240,8 @@ set_many({
         fg = eve.function_name,
     })
 
+    -- Macros are deliberately gold so preprocessing constructs
+    -- are distinguishable immediately while learning C/C++.
     hi(0, "@function.macro", {
         fg = eve.macro,
         bold = true,
@@ -289,19 +291,19 @@ set_many({
     -- ========================================================
 
     hi(0, "DiagnosticError", {
-        fg = eve.rose,
+        fg = "#FF5F6D",
     })
 
     hi(0, "DiagnosticWarn", {
-        fg = eve.bright_pink,
+        fg = eve.gold,
     })
 
     hi(0, "DiagnosticInfo", {
-        fg = eve.cyan,
+        fg = eve.cyan_green,
     })
 
     hi(0, "DiagnosticHint", {
-        fg = eve.lavender,
+        fg = eve.pale_green,
     })
 
     -- ========================================================
@@ -309,7 +311,7 @@ set_many({
     -- ========================================================
 
     hi(0, "FloatBorder", {
-        fg = eve.bright_purple,
+        fg = eve.deep_green,
         bg = "NONE",
     })
 
@@ -344,22 +346,22 @@ set_many({
     })
 
     hi(0, "TelescopeBorder", {
-        fg = eve.bright_purple,
+        fg = eve.deep_green,
         bg = "NONE",
     })
 
     hi(0, "TelescopePromptBorder", {
-        fg = eve.pink,
+        fg = eve.electric_green,
         bg = "NONE",
     })
 
     hi(0, "TelescopeResultsBorder", {
-        fg = eve.bright_purple,
+        fg = eve.deep_green,
         bg = "NONE",
     })
 
     hi(0, "TelescopePreviewBorder", {
-        fg = eve.cyan,
+        fg = eve.cyan_green,
         bg = "NONE",
     })
 
@@ -370,14 +372,12 @@ set_many({
     })
 
     hi(0, "TelescopeMatching", {
-        fg = eve.pink,
+        fg = eve.electric_green,
         bold = true,
     })
 
     -- ========================================================
     -- STATUS / TAB / WINBAR
-    --
-    -- PRIME currently uses transparent editor surfaces in the personal setup.
     -- ========================================================
 
     set_many({
