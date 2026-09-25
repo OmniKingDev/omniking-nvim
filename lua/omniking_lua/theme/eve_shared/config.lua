@@ -1,7 +1,7 @@
 local M = {}
 
 local options = {
-    use_terminal_background = false,
+    use_terminal_background = true,
 }
 
 function M.setup(opts)
