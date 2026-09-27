@@ -21,7 +21,7 @@ return {
             styles = {
                 bold = true,
                 italic = true,
-                transparency = true,
+                transparency = false,
             },
 
             groups = {
@@ -67,9 +67,9 @@ return {
                     -- Visual = { fg = "base", bg = "text", inherit = false },
                 },
 
-                before_highlight = function(group, highlight, palette)
+                -- before_highlight = function(group, highlight, palette)
                     -- Your global highlight modifications can go here later.
-                end,
+                -- end,
             },
 
             config = function(_, opts)

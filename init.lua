@@ -1,2 +1,1 @@
 require("omniking_lua")
-
