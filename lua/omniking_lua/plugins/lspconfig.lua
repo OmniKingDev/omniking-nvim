@@ -10,6 +10,15 @@ return {
         },
 
         config = function()
+
+            -- Remove Warnings, Hints, and Info from Diagnostics
+            vim.diagnostic.config({
+                virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
+                signs = { severity = { min = vim.diagnostic.severity.ERROR } },
+                underline = { severity = { min = vim.diagnostic.severity.ERROR } }
+            })
+
+
             -- Preserve your existing C/C++ configuration.
             vim.lsp.config("clangd", {
                 root_markers = {
@@ -50,7 +59,7 @@ return {
                 settings = {
                     Lua = {
                         diagnostics = {
-                            global = { 'vim' },
+                            global = { 'vim', 'love' },
                         },
                     },
                 },

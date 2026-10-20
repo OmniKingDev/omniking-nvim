@@ -38,3 +38,6 @@ vim.opt.updatetime = 50
 
 -- * Add visual column to right of files *
 -- vim.opt.colorcolumn = '80'
+
+-- Set timeout speed
+vim.opt.timeoutlen = 200

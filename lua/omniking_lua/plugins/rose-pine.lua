@@ -56,15 +56,15 @@ return {
             },
 
             palette = {
-                -- moon = {
-                    --     base = "#18191a",
-                    --     overlay = "#363738",
-                    -- },
-                },
+                 moon = {
+                         base = "#18191a",
+                         overlay = "#363738",
+                  },
+            },
 
                 highlight_groups = {
-                    -- Comment = { fg = "foam" },
-                    -- Visual = { fg = "base", bg = "text", inherit = false },
+                    Comment = { fg = "foam" },
+                    Visual = { fg = "base", bg = "text", inherit = false },
                 },
 
                 -- before_highlight = function(group, highlight, palette)
