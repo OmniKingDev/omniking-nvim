@@ -11,35 +11,35 @@
 background = #24151F
 
 # Primary EVE text.
-foreground = #E9967A
+foreground = #E6A58F
 
 
 # ------------------------------------------------------------
-# CORE EVE SPECTRUM
+# CORE EVE SPECTRUM — SOFT ROSE / PLUM
 # ------------------------------------------------------------
 
-palette = 0=#1B0A26
-palette = 1=#FF0055
-palette = 2=#DF00FF
-palette = 3=#FF007F
-palette = 4=#7000FF
-palette = 5=#FF00FF
-palette = 6=#B300FF
-palette = 7=#E8D0FF
+palette = 0=#302334
+palette = 1=#E58B91
+palette = 2=#AE91CC
+palette = 3=#D18EAD
+palette = 4=#8D7DB8
+palette = 5=#C49BC7
+palette = 6=#9D88BC
+palette = 7=#E8D9ED
 
 
 # ------------------------------------------------------------
-# BRIGHT / SUPPORTING SPECTRUM
+# BRIGHT / SUPPORTING SPECTRUM — LAVENDER / CYAN
 # ------------------------------------------------------------
 
-palette = 8=#3D145A
-palette = 9=#FF3377
-palette = 10=#E633FF
-palette = 11=#FF3399
-palette = 12=#8C33FF
-palette = 13=#FF33FF
-palette = 14=#00D4FF
-palette = 15=#FFFFFF
+palette = 8=#746078
+palette = 9=#F0A39A
+palette = 10=#C7ADE6
+palette = 11=#E2AEC1
+palette = 12=#9B87AE
+palette = 13=#DDB7DD
+palette = 14=#9BCED0
+palette = 15=#F3E6E9
 
 
 # ------------------------------------------------------------
@@ -47,4 +47,4 @@ palette = 15=#FFFFFF
 # ------------------------------------------------------------
 
 selection-background = #8B444E
-selection-foreground = #FFFFFF
+selection-foreground = #F3E6E9

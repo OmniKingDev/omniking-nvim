@@ -161,57 +161,50 @@ function M.load(path)
     eve.muted = eve.plum
 
 
-    -- Comments remain recessed purple.
+    -- Dusty lavender comments sit apart from champagne-gold types.
     eve.comment = eve.bright_purple
 
-    -- Namespaces remain in the comment-purple family but are
-    -- brighter so qualifiers such as `std` remain distinguishable.
-    eve.namespace =
-        blend(eve.comment, eve.lavender, 0.28)
+    -- Namespaces use a clearer lavender from the same family.
+    eve.namespace = eve.bright_violet
 
 
-    -- Strings stay readable without competing with structure.
-    eve.string =
-        blend(eve.pink, eve.void, 0.48)
-
+    -- Strings use a chosen dusty rose rather than a darkened pink.
+    eve.string = eve.bright_pink
     eve.number = eve.bright_violet
 
 
-    -- Parameters intentionally stay faint.
+    -- Parameters keep a soft lavender identity alongside salmon text.
     eve.parameter =
-        blend(eve.lavender, eve.void, 0.58)
+        blend(eve.lavender, eve.void, 0.28)
 
 
-    -- Functions receive the strongest cyan role.
-    eve.function_name = eve.cyan
-
-    -- Methods remain related to functions while moving toward
-    -- EVE's deeper purple/blue family.
+    -- Richer cyan for function names; methods retain their softer shade.
+    eve.function_name = "#64D5DA"
     eve.method_name =
-        blend(eve.cyan, eve.electric_purple, 0.35)
+        blend(eve.cyan, eve.void, 0.14)
 
 
-    -- Gold deliberately expands PRIME beyond the original
-    -- terminal spectrum for preprocessing / macro concepts.
-    eve.gold = "#D6A94A"
+    -- Champagne gold separates types from the rose/plum syntax family.
+    -- Macros use a lighter shade of that same accent.
+    eve.gold = "#DEC18C"
     eve.gold_dim =
         blend(eve.gold, eve.void, 0.50)
+    -- Types get a richer gold while macros retain the champagne shade.
+    eve.type = "#E8BF68"
+    eve.macro = blend(eve.gold, eve.white, 0.20)
 
-    eve.macro = eve.gold
 
-
-    eve.keyword = eve.pink
-    eve.control = eve.rose
-    eve.type = eve.bright_purple
+    -- Saturated rose gives keywords a stronger accent.
+    eve.keyword = "#EF89B8"
+    eve.control = eve.bright_rose
 
     eve.member = eve.magenta
-    eve.operator = eve.bright_pink
+    eve.operator = eve.pink
 
 
-    -- Structural punctuation remains faint scaffolding rather
-    -- than competing with identifiers and semantic structure.
+    -- Punctuation follows the lavender neutrals with gentle emphasis.
     eve.punctuation =
-        blend("#FFD1DF", eve.void, 0.55)
+        blend(eve.lavender, eve.void, 0.38)
 
     eve.special = eve.bright_magenta
 
