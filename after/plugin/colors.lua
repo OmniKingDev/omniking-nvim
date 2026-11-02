@@ -70,10 +70,10 @@ local function start_global_listener()
     local last_seen_theme = read_saved_theme()
 
     -- Instantly apply the initial state on startup
-    -- if pcall(vim.cmd, "colorscheme " .. last_seen_theme) then
-    --     clear_background()
-    -- end
-    pcall(vim.cmd, "colorscheme " .. last_seen_theme)
+    if pcall(vim.cmd, "colorscheme " .. last_seen_theme) then
+        clear_background()
+    end
+    -- pcall(vim.cmd, "colorscheme " .. last_seen_theme)
 
     -- Poll the disk file every 500ms to see if another terminal window changed it
     timer:start(0, 500, vim.schedule_wrap(function()
